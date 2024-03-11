@@ -122,7 +122,7 @@ public class DepositForm extends JFrame {
     }//GEN-LAST:event_btn3000ActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-        try {
+         try {
             double money = Double.parseDouble(txtDeposit.getText());
             double accountBalance = balanceType.equals("CURRENT") 
                     ? bankAccount.getCurrentBalance() 
@@ -135,23 +135,37 @@ public class DepositForm extends JFrame {
                 bankAccount.setSavingsBalance(accountBalance + money);
             }
             
-            int option = JOptionPane.showConfirmDialog(this, "Do you want another transaction?",
-                    "Deposit Successful", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            
-            if (option == JOptionPane.YES_OPTION) {
-                this.dispose();
-                new MenuForm(bankAccount).setVisible(true);
-            }
-            else {
-                this.dispose();
-                new LoginForm(bankAccount).setVisible(true);
-            }
+            promptReceipt(money);
+            promptNewTransaction();
         } 
         catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Invalid deposit amount.");
         }
     }//GEN-LAST:event_btnEnterActionPerformed
 
+    private void promptReceipt(double amount) { 
+        int optionReceipt = JOptionPane.showConfirmDialog(this, "Do you want print receipt?",
+                "Print Receipt", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (optionReceipt == JOptionPane.YES_OPTION) {
+            new ReceiptForm(bankAccount, balanceType, "DEPOSIT", amount).setVisible(true);
+        }
+    }
+    
+    private void promptNewTransaction() {
+        int optionNew = JOptionPane.showConfirmDialog(this, "Do you want another transaction?",
+            "Withdraw Successful", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (optionNew == JOptionPane.YES_OPTION) {
+            this.dispose();
+            new MenuForm(bankAccount).setVisible(true);
+        }
+        else {
+            this.dispose();
+            new LoginForm(bankAccount).setVisible(true);
+        }
+    }
+    
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.dispose();
         new MenuForm(bankAccount).setVisible(true);

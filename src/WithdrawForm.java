@@ -133,17 +133,8 @@ public class WithdrawForm extends JFrame {
                     bankAccount.setSavingsBalance(accountBalance - money);
                 }
                 
-                int option = JOptionPane.showConfirmDialog(this, "Do you want another transaction?",
-                    "Withdraw Successful", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            
-                if (option == JOptionPane.YES_OPTION) {
-                    this.dispose();
-                    new MenuForm(bankAccount).setVisible(true);
-                }
-                else {
-                    this.dispose();
-                    new LoginForm(bankAccount).setVisible(true);
-                }
+                promptReceipt(money);
+                promptNewTransaction();
             } 
             else {
                 JOptionPane.showMessageDialog(this, "Balance is insufficient.");
@@ -154,6 +145,29 @@ public class WithdrawForm extends JFrame {
         }
     }//GEN-LAST:event_btnEnterActionPerformed
 
+    private void promptReceipt(double amount) {
+        int optionReceipt = JOptionPane.showConfirmDialog(this, "Do you want to print a receipt?",
+                "Print Receipt", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (optionReceipt == JOptionPane.YES_OPTION) {
+            new ReceiptForm(bankAccount, balanceType, "WITHDRAW", amount).setVisible(true);
+        }
+    }
+    
+    private void promptNewTransaction() {
+        int optionNew = JOptionPane.showConfirmDialog(this, "Do you want another transaction?",
+            "Withdraw Successful", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (optionNew == JOptionPane.YES_OPTION) {
+            this.dispose();
+            new MenuForm(bankAccount).setVisible(true);
+        }
+        else {
+            this.dispose();
+            new LoginForm(bankAccount).setVisible(true);
+        }
+    }
+    
     private void btn1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1000ActionPerformed
         txtWithdraw.setText("1000");
     }//GEN-LAST:event_btn1000ActionPerformed

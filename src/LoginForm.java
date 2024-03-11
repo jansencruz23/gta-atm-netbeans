@@ -2,6 +2,7 @@ import javax.swing.*;
 
 public class LoginForm extends JFrame {
     private BankAccount bankAccount;
+    private int tries = 3;
 
     public LoginForm() {
         initComponents();
@@ -74,6 +75,11 @@ public class LoginForm extends JFrame {
 
         txtPin.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         txtPin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPinKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtPin);
         txtPin.setBounds(280, 170, 300, 50);
 
@@ -109,19 +115,35 @@ public class LoginForm extends JFrame {
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         String password = String.valueOf(txtPin.getPassword());
-        
+
         if (password.equals(bankAccount.getPinNumber())) {
             this.dispose();
             new MenuForm(bankAccount).setVisible(true);
         }
         else {
-            JOptionPane.showMessageDialog(this, "Incorrect PIN. Try again.");
+            tries--;
+            if (tries > 0) {
+                JOptionPane.showMessageDialog(this, "Incorrect PIN. Try again.");
+                txtPin.setText("");
+            }
+            else {
+                dispose();
+            }
         }
     }//GEN-LAST:event_btnEnterActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void txtPinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPinKeyTyped
+        String password = String.valueOf(txtPin.getPassword());
+        char c = evt.getKeyChar();
+        
+        if (!Character.isDigit(c) || password.length() >= 6) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPinKeyTyped
 
     public static void main(String args[]) {
         try {

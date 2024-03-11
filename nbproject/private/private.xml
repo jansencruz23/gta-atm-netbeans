@@ -5,7 +5,7 @@
             <url>src/BalanceForm.java</url>
             <bookmark id="1">
                 <name/>
-                <line>76</line>
+                <line>78</line>
                 <key/>
             </bookmark>
         </file>
@@ -14,12 +14,12 @@
         <group>
             <file>file:/D:/User/Jansen/Self%20Study/2024%20-%2003%20-%20MARCH/Commission/Java%20ATM/ATMMachine/src/MenuForm.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2024%20-%2003%20-%20MARCH/Commission/Java%20ATM/ATMMachine/src/WithdrawForm.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2024%20-%2003%20-%20MARCH/Commission/Java%20ATM/ATMMachine/src/ReceiptForm.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2024%20-%2003%20-%20MARCH/Commission/Java%20ATM/ATMMachine/src/AccountForm.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2024%20-%2003%20-%20MARCH/Commission/Java%20ATM/ATMMachine/src/BalanceForm.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2024%20-%2003%20-%20MARCH/Commission/Java%20ATM/ATMMachine/src/DepositForm.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2024%20-%2003%20-%20MARCH/Commission/Java%20ATM/ATMMachine/src/BankAccount.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2024%20-%2003%20-%20MARCH/Commission/Java%20ATM/ATMMachine/src/LoginForm.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2024%20-%2003%20-%20MARCH/Commission/Java%20ATM/ATMMachine/src/Fonts.java</file>
         </group>
     </open-files>
 </project-private>
